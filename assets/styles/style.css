@@ -1,0 +1,1102 @@
+/* Réinitialisation des styles par défaut */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variables globales pour les couleurs et thèmes */
+:root {
+    --primary-color: #BE9FE1;      /* Couleur principale (violet) */
+    --secondary-color: #bd9ee0;    /* Couleur secondaire */
+    --text-color: #030c0c;         /* Couleur du texte */
+    --background-color:  #f7fdfd;   /* Fond de la même couleur que les boutons */
+    --card-bg: #ffffff;            /* Fond des cartes */
+    --border-color: #e5e7eb;       /* Couleur des bordures */
+    --nav-links: black;         /* Couleur des liens de navigation */
+    --text-strong: white;    /* Couleur des mot en gras */
+    --menu-couleur: black;      /* Couleur du menu burger */
+}
+
+/* Styles de base du body */
+body {
+    font-family: 'Futura', sans-serif;  /* Police principale */
+    line-height: 1.6;                   /* Hauteur de ligne pour la lisibilité */
+    background-color: var(--background-color);
+    color: var(--text-color);
+    overflow-x: hidden;                 /* Empêche le scroll horizontal */
+}
+
+/* Styles header */
+header {
+    padding: 2rem;
+    position: fixed;                   /* En-tête fixe */
+    width: 100%;
+    top: 0;
+    z-index: 1000;                     /* Toujours au-dessus des autres éléments */
+    background-color: var(--secondary-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);  /* Ombre légère */
+    text-align: center;
+}
+
+/* Navigation principale */
+nav {
+    display: flex;
+    justify-content: center;  /* Centre horizontalement */
+    align-items: center;     /* Centre verticalement */
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;      /* Pour le positionnement du burger menu */
+}
+
+.nav-container {
+    position: relative;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.logo img {
+    width: 100px;
+    height: auto;
+    margin-right: 1rem;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+/*styles pour les bouton translate*/
+.language-switcher {
+    position: fixed;
+    flex-direction: column;
+    top: 60px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+}
+
+/* style du Menu burger positionné à droite */
+.burger-menu {
+    display: none;
+    cursor: pointer;
+    z-index: 1000;
+    position: absolute;
+    color: black;
+}
+
+.burger-icon span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--menu-couleur);
+    margin: 5px 0;
+    transition: 0.3s;
+}
+
+/* Animation du burger en X */
+.burger-menu.active .burger-icon span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 8px;
+}
+
+.burger-menu.active .burger-icon span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.active .burger-icon span:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 8px;
+}
+
+/* Styles pour le bouton jour nuit */
+.theme-toggle {
+    position: absolute;
+    right: 40px;
+    top: 40px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.theme-toggle img {
+    width: 30px;
+    height: 30px;
+    transition: all 0.3s ease;
+    position: absolute;
+    top: 0px;
+    left: 105px;
+}
+
+.dark-icon {
+    display: none;
+}
+
+/* Dark theme styles */
+[data-theme="dark"] {
+    --primary-color: #2c2c2c;
+    --secondary-color: #3a3a3a;
+    --text-color: #ffffff;
+    --background-color: #1a1a1a;
+    --card-bg: #2c2c2c;
+    --nav-links: #ffffff;
+    --text-strong: red;
+    --menu-couleur: white;      /* Couleur du menu burger */
+}
+
+[data-theme="dark"] .light-icon {
+    display: none;
+}
+
+[data-theme="dark"] .dark-icon {
+    display: block;
+}
+
+
+/* Liste des liens de navigation */
+.nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: var(--nav-links);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: white;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+
+/* Sections de compétences et projets */
+.skills, .projects {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Conteneurs des cartes */
+.skills-container, .projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Cartes de compétences */
+.skill-card {
+    background: var(--secondary-color);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+/* Animation des cartes et de mes projets au survol */
+.skill-card:hover, .project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    background: linear-gradient(145deg, var(--secondary-color), #ffffff);
+    transition: all 0.3s ease;
+}
+
+
+/* Cartes de projets */
+.project-card {
+    background: var(--secondary-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Images des projets */
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Section de contact */
+.contact {
+    padding: 4rem 2rem;
+    background-color: var(--secondary-color);
+
+}
+
+/* Formulaire de contact */
+#contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Groupes de formulaire */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+/* Labels du formulaire */
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+/* Champs de saisie */
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: inherit;
+}
+
+
+/* Liens sociaux */
+.social-links {
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: var(--text-color);
+    margin: 0 1rem;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Classes d'animation */
+.visible {
+    animation: fadeIn 0.6s ease forwards;
+}
+
+/* Transitions douces pour le changement de thème */
+body {
+    transition: background-color 0.3s, color 0.3s;  /* Animation pour le fond et le texte */
+}
+
+.project-card, .skill-card {
+    transition: background-color 0.3s, box-shadow 0.3s;  /* Animation pour les cartes */
+}
+
+/* Empêcher le scroll horizontal */
+body {
+    overflow-x: hidden;
+}
+
+/* Moi Section */
+#Moi {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 11rem;
+}
+
+
+/* Style des titres de section */
+section:not(#Moi) h2 {
+    font-size: 2.8rem;
+    text-align: center;
+    margin: 4rem;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    font-weight: 800;
+    color: #fff;
+    background: linear-gradient(45deg, #6b64f3, #D4AFFF);
+    padding: 20px 40px;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(107, 100, 243, 0.3);
+    transition: all 0.3s ease;
+}
+
+section:not(#Moi) h2::before,
+section:not(#Moi) h2::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    transition: all 0.3s ease;
+}
+
+section:not(#Moi) h2::before {
+    left: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-width: 25px 0 25px 25px;
+    border-color: transparent transparent transparent #6b64f3;
+}
+
+section:not(#Moi) h2::after {
+    right: 0;
+    top: 50%;
+    transform: translate(50%, -50%);
+    border-width: 25px 25px 25px 0;
+    border-color: transparent #D4AFFF transparent transparent;
+}
+
+/* Animation au survol */
+section:not(#Moi) h2:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(107, 100, 243, 0.4);
+}
+
+section:not(#Moi) h2:hover::before {
+    border-width: 30px 0 30px 30px;
+}
+
+section:not(#Moi) h2:hover::after {
+    border-width: 30px 30px 30px 0;
+}
+
+/* Page des projets */
+.projects-page {
+    display: none;  /* On cache ces styles car ils ne sont plus utilisés */
+}
+
+.projects-page h1 {
+    display: none;
+}
+
+.projects-grid {
+    /* On garde la grille car elle est utilisée dans all-projects.html */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+/* Animation pour les cartes de projet */
+.project-card {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Styles pour la page tous les projets */
+.all-projects {
+    padding: 120px 2rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.all-projects h1 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    color: var(--text-color);
+}
+
+.project-card {
+    background: var(--secondary-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.project-content {
+    padding: 1.5rem;
+}
+/*permet de mettre en ligne les technologies utilisées dans chaque projet dans le fichier all-project.php*/
+.technologies {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 1rem 0;
+}
+
+.technologies li {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+
+
+/* Style du bouton voir plus */
+.voir-plus {
+    display: block;  /* Pour que le margin auto fonctionne */
+    margin: 2rem auto;  /* Centre horizontalement avec une marge verticale */
+    text-align: center;
+    width: fit-content;  /* Largeur adaptée au contenu */
+}
+
+/* Skills Section */
+
+
+
+.social-card {
+    padding: 0;
+    margin: 0;
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    text-align: center;
+}
+
+.skill-card {
+    background-color: var(--secondary-color);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    width: 200px;
+    margin: 0 auto;
+}
+
+.skill-card img {
+    width: 80px;  /* Taille de base pour toutes les images de compétences */
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.skill-card img[alt="esprit-dequipe"] {
+    width: 90px;  /* Légèrement plus grand que les autres */
+    height: auto;
+}
+
+.skill-card h3 {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+
+/* Projects Section */
+#projects {
+    padding: 4rem 2rem;
+}
+
+.project-card {
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Tools Section */
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.tool-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+}
+
+.tool-item img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+
+.card {
+    width: 190px;
+    height: 254px;
+    background: #3405a3;
+    border-radius: 15px;
+    box-shadow: 1px 5px 60px 0px #100a886b;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-15px);
+    box-shadow: 1px 10px 30px 0px rgba(106, 100, 243, 0.5);
+}
+
+.card:hover .img {
+    background: #534bf3;
+    transform: scale(1.1);
+}
+
+.card .img {
+    width: 70px;
+    height: 80px;
+    background: #6b64f3;
+    border-radius: 15px;
+    margin: auto;
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.card .card-border-top {
+    width: 60%;
+    height: 3%;
+    background: #6b64f3;
+    margin: auto;
+    border-radius: 0px 0px 15px 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+.card span {
+    font-weight: 600;
+    color: white;
+    text-align: center;
+    display: block;
+    padding-top: 10px;
+    font-size: 16px;
+}
+
+.card .job {
+    font-weight: 400;
+    color: white;
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    padding: 0 15px;
+}
+
+.card .img img {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+}
+
+.card button {
+    padding: 8px 25px;
+    display: block;
+    margin: auto;
+    border-radius: 8px;
+    border: none;
+    margin-top: 30px;
+    background: #6b64f3;
+    color: white;
+    font-weight: 600;
+}
+
+.card button:hover {
+    background: #534bf3;
+}
+
+/* Contact Section */
+#contact {
+    padding: 4rem 2rem;
+    background-color: var(--secondary-color);
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.input-container {
+    margin-bottom: 1.5rem;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px;
+    margin-top: 0px;
+    border-top: 1px solid rgba(107, 100, 243, 0.1);
+}
+
+.copyright {
+    margin: 0;
+}
+
+.copyright a {
+    text-decoration: none; /* Enlève le soulignement */
+    outline: none; /* Enlève le surlignement au focus */
+    color: inherit;  /* Garde la couleur du texte par défaut */
+}
+
+
+.social-card {
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px 25px;
+    border-radius: 14px;
+}
+
+  
+.svgContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    backdrop-filter: blur(0px);
+    letter-spacing: 0.8px;
+    border-radius: 10px;
+    transition: all 0.3s;
+    border: 1px solid rgba(156, 156, 156, 0.466);
+    z-index: 2;
+}
+  
+.BG {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #181818;
+    z-index: 1;
+    border-radius: 10px;
+    pointer-events: none;
+    transition: all 0.3s;
+    font-size: 0px;
+}
+
+.github .BG {
+    background: #181818;
+}
+
+.linkdin .BG {
+    background: #0077b5;
+}
+
+
+
+/* Presentation Section */
+#presentation {
+    padding: 4rem 2rem;
+    background-color: var(--primary-color);
+    margin: 2rem auto;
+    max-width: 800px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.presentation-text {
+    line-height: 1.8;
+    color: var(--text-color);
+}
+
+.presentation-text p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    text-align: justify;
+}
+
+.presentation-text p:last-child {
+    margin-bottom: 0;
+}
+
+.presentation-text strong {
+    color: var(--text-strong);
+    font-weight: 700;
+}
+
+
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 3rem;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    position: relative;
+}
+
+nav a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    color: #fff;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 50%;
+    background-color: var(--secondary-color);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Ajustement pour le contenu principal */
+main {
+    padding-top: 80px; /* Pour compenser la hauteur du header fixe */
+}
+
+
+
+.avatar-container {
+    width: 300px;
+    height: 300px;
+    border-radius: 18px;
+    overflow: hidden;
+    margin: 2rem 0;
+    width: 300px;
+    height: 300px;
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.voir-plus, .download-cv, button[type="submit"] {
+    display: inline-block;
+    transition: all 0.2s ease-in;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    color: #090909;
+    padding: 0.7em 1.7em;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 0.5em;
+    background: #e8e8e8;
+    border: 1px solid #e8e8e8;
+    box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+    text-decoration: none;
+    text-align: center;
+}
+  
+.voir-plus:active, .download-cv:active, button[type="submit"]:active {
+    color: #666;
+    box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
+}
+  
+.voir-plus:before, .download-cv:before, button[type="submit"]:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) scaleY(1) scaleX(1.25);
+    top: 100%;
+    width: 140%;
+    height: 180%;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 50%;
+    display: block;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+    z-index: -1;
+}
+  
+.voir-plus:after, .download-cv:after, button[type="submit"]:after {
+    content: "";
+    position: absolute;
+    left: 55%;
+    transform: translateX(-50%) scaleY(1) scaleX(1.45);
+    top: 180%;
+    width: 160%;
+    height: 190%;
+    background-color: #D4AFFF;
+    border-radius: 50%;
+    display: block;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+    z-index: -1;
+}
+  
+.voir-plus:hover, .download-cv:hover, button[type="submit"]:hover {
+    color: #ffffff;
+    border: 1px solid #D4AFFF;
+}
+  
+.voir-plus:hover:before, .download-cv:hover:before, button[type="submit"]:hover:before {
+    top: -35%;
+    background-color: #D4AFFF;
+    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+  
+.voir-plus:hover:after, .download-cv:hover:after, button[type="submit"]:hover:after {
+    top: -45%;
+    background-color: #D4AFFF;
+    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+/* Ajustements spécifiques pour le bouton de téléchargement CV */
+.download-cv {
+    margin-top: 2rem;
+}
+
+/* Ajustements spécifiques pour le bouton d'envoi du formulaire */
+button[type="submit"] /*permet d'envoyer les données sous forme de tableau grace aux crochets */ {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+/* Ajout du défilement fluide */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Ajustement pour le scroll */
+section {
+    scroll-margin-top: 80px; /* Ajustez cette valeur selon la hauteur de votre header */
+}
+
+.voir-plus {
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4rem;
+} 
+
+/*permet de mettre l'animation des bulles dans la partie presentation*/
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.floating-bubble {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.2;
+    animation: floatAnimation linear infinite;
+}
+
+
+/*Mentions légales*/
+.legal-content {
+    max-width: 800px;
+    margin: 120px auto 40px;
+    padding: 0 20px;
+}
+
+.legal-content h1 {
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.legal-content h2 {
+    color: var(--secondary-color);
+    margin: 2rem 0 1rem;
+}
+
+.legal-content p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+/*permet de mettre l'animation des bulles dans la partie presentation*/
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.floating-bubble {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.2;
+    animation: floatAnimation linear infinite;
+}
+
+@keyframes floatAnimation {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .burger-menu {
+        display: block;
+        right: 35px;
+        top: 20px;
+        color: var(--menu-couleur);
+    }
+
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--primary-color);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .burger-menu.active span:nth-child(1) {
+        transform: rotate(35deg) translate(5px, 5px);
+    }
+
+    .burger-menu.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .burger-menu.active span:nth-child(3) {
+        transform: rotate(-35deg) translate(5px, -5px);
+    }
+
+    .skills-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+

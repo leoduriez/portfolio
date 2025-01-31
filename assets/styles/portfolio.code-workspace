@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../dossier-portfolio-leo-duriez"
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5501
+	}
+}
