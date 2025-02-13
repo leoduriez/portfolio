@@ -67,14 +67,14 @@ a {
 
 /* ----------- HEADER --------------- */
 header {
-    padding: 2rem;
-    position: fixed;                   /* En-tête fixe */
-    width: 100%;
-    top: 0;
-    z-index: 1000;                     /* Toujours au-dessus des autres éléments */
-    background-color: var(--secondary-color);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);  /* Ombre légère */
-    text-align: center;
+    padding: 2rem; /* Ajoute un espacement intérieur de 2 rem autour de l'en-tête */
+    position: fixed; /* L'en-tête reste fixe en haut de la page lors du défilement */
+    width: 100%; /* Prend toute la largeur de la fenêtre */
+    top: 0; /* Positionne l'en-tête en haut de la page */
+    z-index: 1000; /* Assure que l'en-tête est toujours au-dessus des autres éléments de la page */
+    background-color: var(--secondary-color); /* Définit la couleur de fond de l'en-tête à une couleur secondaire définie dans les variables CSS */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Ajoute une légère ombre sous l'en-tête pour lui donner de la profondeur */
+    text-align: center; /* Centre le texte à l'intérieur de l'en-tête */
 }
 
 
@@ -99,15 +99,14 @@ header {
 
 /* Navigation principale */
 nav {
-    display: flex;
-    justify-content: center;  /* Centre horizontalement */
-    align-items: center;     /* Centre verticalement */
-    padding: 1rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;      /* Pour le positionnement du burger menu */
+    display: flex; /* Utilise le modèle de boîte flexible pour organiser les éléments enfants */
+    justify-content: center;  /* Centre horizontalement les éléments enfants dans la barre de navigation */
+    align-items: center;     /* Centre verticalement les éléments enfants dans la barre de navigation */
+    padding: 1rem 2rem; /* Ajoute un espacement intérieur de 1 rem en haut et en bas, et 2 rem à gauche et à droite */
+    max-width: 1200px; /* Définit la largeur maximale de la barre de navigation à 1200 pixels */
+    margin: 0 auto; /* Centre la barre de navigation horizontalement dans son conteneur parent */
+    position: relative;      /* Définit une position relative pour permettre le positionnement absolu des éléments enfants, comme le menu burger */
 }
-
 nav ul {
     display: flex; /* Affichage flexible pour la navigation */
     justify-content: center; /* Centre les éléments horizontalement */
@@ -1001,12 +1000,70 @@ footer .mentions-legales-link {
     }
 
     .tools-grid {
-        grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); /* Crée des colonnes responsives avec une largeur minimum de 190px */
-        padding: 10px; /* Espacement interne réduit pour les petits écrans */
-        }
-        
-        .card {
-        margin: 0 auto; /* Centre horizontalement les cartes dans leur conteneur */
-        }
-    }        
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 0 10px;
+    }
 
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+        
+    .card {
+        margin: 0 auto; /* Centre horizontalement les cartes dans leur conteneur */
+     }
+     
+     #moi {
+        padding: 10rem 2rem;
+    }
+
+    .avatar-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    section:not(#moi) h2 {
+        font-size: 2rem;
+        letter-spacing: 4px;
+        padding: 15px 30px;
+    }
+
+    section:not(#moi) h2::before,
+    section:not(#moi) h2::after {
+        border-width: 15px;
+    }
+
+    .mentions-legales-container {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+        padding: 15px 20px;
+        margin: 2rem 1rem;
+        white-space: normal;
+        word-wrap: break-word;
+        line-height: 1.3;
+    }
+
+    footer .panel {
+        width: 100%;
+        padding: 0 15px;
+        overflow-x: hidden;
+    }
+
+    body.menu-open {
+        overflow-x: hidden;
+        position: fixed;
+        width: 100%;
+    }
+     
+}        
+
+@media screen and (max-width: 480px) {
+    section:not(#moi) h2 {
+        font-size: 1.5rem;
+        padding: 12px 15px;
+        letter-spacing: 1px;
+    }
+}

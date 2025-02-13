@@ -1,0 +1,129 @@
+/* Définition des variables de couleurs et thèmes */
+:root {
+    --primary-color: #BE9FE1;    /* Violet principal */
+    --secondary-color: #bd9ee0;  /* Violet secondaire pour les interactions */
+    --text-color: #030c0c;       /* Couleur du texte presque noir */
+    --background-color: #f7fdfd; /* Fond très légèrement bleuté */
+    --card-bg: #ffffff;          /* Fond blanc pour les cartes */
+}
+
+/* Style général de la page */
+body {
+    font-family: 'Futura', sans-serif;  /* Police moderne et épurée */
+    line-height: 1.6;                   /* Espacement des lignes pour la lisibilité */
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;                      /* Centrage avec Flexbox */
+    justify-content: center;            /* Centrage horizontal */
+    align-items: center;                /* Centrage vertical */
+    height: 100vh;                      /* Hauteur totale de la vue */
+    margin: 0;                          /* Suppression des marges par défaut */
+    padding-top: 80px;                  /* Espace pour le header fixe */
+}
+
+/* Conteneur du formulaire de connexion */
+.login-container {
+    background: var(--card-bg);         /* Fond blanc */
+    padding: 2.5rem;                    /* Espacement interne généreux */
+    border-radius: 12px;                /* Coins arrondis */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Ombre légère */
+    width: 100%;                        /* Largeur responsive */
+    max-width: 400px;                   /* Largeur maximale fixe */
+}
+
+/* Style du titre */
+h1 {
+    text-align: center;                 /* Centrage du texte */
+    color: var(--text-color);
+    margin-bottom: 30px;                /* Espace sous le titre */
+    font-size: 2.2rem;                  /* Taille de police importante */
+}
+
+/* Groupe de champs de formulaire */
+.form-group {
+    margin-bottom: 1.5rem;              /* Espace entre les groupes */
+    width: 80%;                         /* Largeur réduite pour l'esthétique */
+    margin-left: auto;                  /* Centrage horizontal */
+    margin-right: auto;
+}
+
+/* Style des labels */
+label {
+    display: block;                     /* Placement en bloc */
+    margin-bottom: 0.8rem;              /* Espace sous le label */
+    font-weight: bold;                  /* Texte en gras */
+    color: var(--text-color);
+    text-align: center;                 /* Centrage du texte */
+}
+
+/* Style des champs de saisie */
+input {
+    width: 100%;                        /* Largeur totale */
+    padding: 0.8rem;                    /* Espacement interne */
+    border: 2px solid var(--primary-color);
+    border-radius: 6px;                 /* Coins arrondis */
+    font-family: 'Futura', sans-serif;
+    transition: border-color 0.3s ease; /* Animation de la bordure */
+    display: block;
+}
+
+/* État focus des champs */
+input:focus {
+    outline: none;                      /* Suppression du contour par défaut */
+    border-color: var(--secondary-color); /* Changement de couleur au focus */
+}
+
+/* Style du bouton */
+button {
+    width: 50%;                         /* Largeur réduite */
+    padding: 1rem;                      /* Espacement interne */
+    background-color: var(--primary-color);
+    color: white;                       /* Texte blanc */
+    border: none;
+    border-radius: 6px;                 /* Coins arrondis */
+    cursor: pointer;                    /* Curseur pointer */
+    font-family: 'Futura', sans-serif;
+    font-weight: bold;                  /* Texte en gras */
+    transition: background-color 0.3s ease; /* Animation au survol */
+    display: block;
+    margin: 0 auto;                     /* Centrage horizontal */
+}
+
+/* État survol du bouton */
+button:hover {
+    background-color: var(--secondary-color); /* Changement de couleur au survol */
+}
+
+/* Style des messages d'erreur */
+.error {
+    color: #ff4444;                     /* Rouge pour les erreurs */
+    text-align: center;                 /* Centrage du texte */
+    margin-bottom: 1.5rem;              /* Espace sous le message */
+    font-weight: bold;                  /* Texte en gras */
+}
+
+
+@media screen and (max-width: 768px) {
+    .login-container {
+        margin: 1rem;
+        padding: 2rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .login-container {
+        padding: 1.5rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    button {
+        padding: 0.8rem;
+    }
+}

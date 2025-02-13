@@ -1,0 +1,357 @@
+/* Header Styles */
+header {
+    font-family: 'Futura', sans-serif;
+    padding: 2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+
+body {
+    font-family: 'Futura', sans-serif;
+    line-height: 1.6;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding-top: 120px;
+}
+
+:root {
+    --primary-color: #BE9FE1;      /* Purple */
+    --secondary-color: #bd9ee0;    /* Light purple */
+    --text-color: #030c0c;
+    --background-color: #f7fdfd;
+    --nav-links: black;
+    --card-bg: #ffffff;
+}
+
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.logo img {
+    width: 100px;
+    height: auto;
+    margin-right: 1rem;
+}
+
+
+/* Navigation principale */
+nav {
+    display: flex;
+    justify-content: center;  /* Centre horizontalement */
+    align-items: center;     /* Centre verticalement */
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;      /* Pour le positionnement du burger menu */
+}
+
+nav ul {
+    display: flex; /* Affichage flexible pour la navigation */
+    justify-content: center; /* Centre les éléments horizontalement */
+    list-style: none; /* Supprime les puces de liste */
+    gap: 3rem; /* Espace entre les éléments */
+    margin: 0; /* Supprime les marges */
+    padding: 0; /* Supprime les espacements internes */
+}
+    
+nav li {
+    position: relative; /* Position relative pour les effets de survol */
+}
+    
+nav a {
+    color: var(--secondary-color); /* Couleur du texte depuis les variables */
+    text-decoration: none; /* Supprime le soulignement */
+    font-weight: bold; /* Texte en gras */
+    font-size: 1.1rem; /* Taille de police légèrement plus grande */
+    padding: 0.5rem 1rem; /* Espacement interne */
+    transition: all 0.3s ease; /* Animation douce */
+}
+    
+nav a:hover {
+    color: #fff; /* Texte blanc au survol */
+}
+    
+ nav a::after {
+    content: ''; /* Crée un pseudo-élément vide */
+    position: absolute; /* Position absolue par rapport au lien */
+    width: 0; /* Largeur initiale nulle */
+    height: 2px; /* Hauteur de la ligne */
+    bottom: -5px; /* Position sous le texte */
+    left: 50%; /* Centré horizontalement */
+    background-color: var(--secondary-color); /* Couleur de la ligne */
+    transition: all 0.3s ease; /* Animation douce */
+    transform: translateX(-50%); /* Ajustement du centrage */
+}
+    
+nav a:hover::after {
+    width: 100%; /* La ligne s'étend sur toute la largeur au survol */
+}
+    
+
+.nav-container {
+    position: relative;
+}
+
+/* Liste des liens de navigation */
+.nav-links {
+    display: flex; /* Affichage flexible des liens */
+    justify-content: center; /* Centre horizontalement les liens */
+    align-items: center; /* Centre verticalement les liens */
+    list-style: none; /* Supprime les puces de liste */
+    gap: 3rem; /* Espacement entre les liens */
+    margin: 0px;
+    padding: 0; /* Supprime les paddings */
+}
+
+/* Configuration de la barre de navigation */
+nav {
+    display: flex;                /* Utilise le modèle flexbox pour l'agencement */
+    justify-content: center;      /* Centre horizontalement les éléments */
+    align-items: center;          /* Centre verticalement les éléments */
+    padding: 1rem 2rem;          /* Espacement interne : 1rem haut/bas, 2rem gauche/droite */
+    max-width: 1200px;           /* Largeur maximale de la navigation */
+    margin: 0 auto;              /* Centre la navigation dans la page */
+    margin-top: 20px;            /* Espace au-dessus de la navigation */
+}
+
+/* Style des liens de navigation */
+.nav-links a {
+    color: var(--nav-links);     /* Couleur des liens définie par variable CSS */
+}
+
+.nav-links a:hover {
+    color: #fff;                 /* Couleur blanche au survol des liens */
+}
+
+.nav-links a::after {
+    background-color: white;     /* Couleur de la ligne de soulignement */
+}
+
+/* Style général du corps de page */
+body {
+    font-family: 'Futura', sans-serif;  /* Police principale */
+    line-height: 1.6;                   /* Hauteur de ligne pour la lisibilité */
+    background-color: var(--background-color);  /* Couleur de fond variable */
+    color: var(--text-color);           /* Couleur du texte variable */
+    margin: 0;                          /* Supprime les marges par défaut */
+    padding-top: 120px;                 /* Espace en haut pour le header fixe */
+}
+
+/* Conteneur principal de l'interface admin */
+.admin-container {
+    max-width: 1200px;           /* Largeur maximale du conteneur */
+    margin: 0 auto;              /* Centre le conteneur */
+    padding: 2rem;               /* Espacement interne */
+    background: var(--card-bg);  /* Couleur de fond variable */
+    border-radius: 12px;         /* Coins arrondis */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);  /* Ombre portée subtile */
+}
+
+/* Style du tableau */
+table {
+    width: 100%;                /* Occupe toute la largeur disponible */
+    border-collapse: collapse;  /* Fusionne les bordures des cellules */
+    margin-top: 20px;          /* Espace au-dessus du tableau */
+    background: white;         /* Fond blanc */
+    border-radius: 8px;        /* Coins arrondis */
+    overflow: hidden;          /* Cache le débordement pour les coins arrondis */
+}
+
+th {
+    background-color: var(--primary-color);  /* Couleur de fond des en-têtes */
+    color: white;              /* Texte blanc pour les en-têtes */
+    padding: 15px;             /* Espacement interne */
+    text-align: left;          /* Alignement du texte à gauche */
+}
+
+td {
+    padding: 12px 15px;        /* Espacement interne des cellules */
+    border-bottom: 1px solid #eee;  /* Ligne de séparation entre les lignes */
+}
+
+tr:hover {
+    background-color: #f8f9fa;  /* Couleur de fond au survol des lignes */
+}
+
+/* Style des boutons */
+.btn {
+    display: inline-block;      /* Comportement en ligne avec dimensions */
+    padding: 8px 15px;         /* Espacement interne */
+    border-radius: 6px;        /* Coins arrondis */
+    font-weight: bold;         /* Texte en gras */
+    transition: all 0.3s ease; /* Animation douce */
+    text-decoration: none;     /* Supprime le soulignement */
+}
+
+.btn-delete {
+    background-color: #ff4444;  /* Rouge pour le bouton supprimer */
+    color: white;              /* Texte blanc */
+}
+
+.btn-delete:hover {
+    background-color: #cc0000;  /* Rouge plus foncé au survol */
+}
+
+/* Style du titre principal */
+h1 {
+    text-align: center;        /* Centre le texte */
+    color: #333;              /* Couleur gris foncé */
+    margin-top: 130px;        /* Grand espace au-dessus */
+    margin-bottom: 20px;      /* Espace en dessous */
+    font-size: 2.5rem;        /* Taille de police */
+    font-weight: bold;        /* Texte en gras */
+}
+
+
+@media screen and (max-width: 768px) {
+    header {
+        padding: 1rem;
+    }
+
+    .logo img {
+        width: 80px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .admin-container {
+        padding: 1rem;
+        margin: 1rem;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    th, td {
+        min-width: 120px;
+    }
+
+    .btn {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+        margin-top: 60px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .nav-links {
+        gap: 1rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+        margin-top: 50px;
+    }
+
+    .btn {
+        padding: 5px 10px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Style général pour le corps */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+}
+
+/* Style pour le conteneur principal */
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style pour les titres */
+h1, h2 {
+    color: #333;
+}
+
+/* Style pour les formulaires */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Pour inclure le padding dans la largeur totale */
+}
+
+/* Style pour le bouton */
+button {
+    background-color: #BE9FE1;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #BE9FE1;
+}
+
+/* Style pour le tableau des projets */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #BE9FE1;
+    color: #333;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Couleur de fond pour les lignes paires */
+}
+
+tr:hover {
+    background-color: #f1f1f1; /* Couleur de fond au survol */
+}
+
